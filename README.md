@@ -4,6 +4,9 @@ Hey there! Welcome to KickCast. This is a project we built to predict the outcom
 
 Then, it displays all these predictions on a nice web dashboard.
 
+![KickCast Dashboard View](./assets/dashboard-main.png)
+![KickCast Detailed View](./assets/dashboard-details.png)
+
 ---
 
 ## How It All Fits Together (Architecture)
