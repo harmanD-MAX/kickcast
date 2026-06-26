@@ -1,0 +1,38 @@
+# Environment & secrets
+.env
+*.env.local
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environment
+venv/
+.venv/
+env/
+
+# Azurite local data
+azurite_data/
+__azurite_db_*.json
+__blobstorage__/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Data files (downloaded locally, not committed)
+data/raw/
+
+# Model artifacts (generated, stored in blob)
+models/

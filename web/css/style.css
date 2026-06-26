@@ -1,0 +1,729 @@
+/*
+  KickCast Almanac — Editorial Design System
+  Warm off-white, deep ink, muted crimson.
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  --bg-color: #fafaf9;
+  --text-ink: #1c1917;
+  --text-main: #44403c;
+  --text-muted: #78716c;
+  --accent-color: #059669;
+  --border-color: #e7e5e4;
+  --highlight-color: rgba(5, 150, 105, 0.05);
+  
+  --font-serif: 'Playfair Display', serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-hand: 'Caveat', cursive;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-color);
+  color: var(--text-ink);
+  line-height: 1.5;
+  padding: 0.5rem 1rem 2rem 1rem;
+  min-height: 100vh;
+}
+
+/* -------------------------------------
+   Header / Masthead
+-------------------------------------- */
+.app-header {
+  border-bottom: 3px solid var(--accent-color);
+  margin-bottom: 2rem;
+  background-color: transparent;
+  position: relative;
+}
+
+.header-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0.5rem 1rem 1rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.wc-icon {
+  width: 48px;
+  height: 48px;
+  stroke: var(--accent-color);
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4));
+  animation: rotateSlow 20s linear infinite;
+}
+
+@keyframes rotateSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.header-text h1 {
+  font-family: var(--font-sans);
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  margin: 0;
+  color: var(--accent-color);
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.header-text .subtitle {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 600;
+  margin-top: -0.2rem;
+  text-align: center;
+}
+
+/* -------------------------------------
+   Layout Containers
+-------------------------------------- */
+.container {
+  flex: 1;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.section-title {
+  font-family: var(--font-sans);
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 2px solid var(--text-ink);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--accent-color);
+}
+
+/* -------------------------------------
+   Predictions Table (Almanac style)
+-------------------------------------- */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  margin-bottom: 4rem;
+}
+
+.almanac-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-family: var(--font-sans);
+  text-align: left;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+  border: 1px solid var(--border-color);
+}
+
+.almanac-table th {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border-bottom: 2px solid var(--border-color);
+  background-color: #fafaf9;
+  padding: 1rem 1.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.almanac-table td {
+  padding: 1.25rem 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+  vertical-align: middle;
+  transition: background-color 0.2s ease;
+}
+
+.almanac-table tbody tr.match-row {
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  background-color: transparent;
+}
+
+.almanac-table tbody tr.match-row:hover {
+  /* Removed 3D transform to prevent flickering */
+}
+
+.almanac-table tbody tr.match-row:hover td {
+  background-color: var(--highlight-color);
+  cursor: pointer;
+}
+
+/* Columns */
+.col-date {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+th.col-match {
+  text-align: center;
+}
+
+td.col-match {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-ink);
+  vertical-align: middle;
+}
+
+th.col-result {
+  text-align: center;
+}
+
+.match-fixture-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.team-name {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  font-family: var(--font-hand);
+  font-size: 1.5rem;
+}
+
+.team-name.home {
+  justify-content: center;
+  padding-right: 0;
+}
+
+.team-name.away {
+  justify-content: center;
+  padding-left: 0;
+}
+
+.vs {
+  font-family: var(--font-serif);
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--accent-color);
+  display: inline-block;
+  text-align: center;
+}
+
+/* -------------------------------------
+   Probability Visualization
+-------------------------------------- */
+.col-prob {
+  width: 300px;
+}
+
+.prob-bar-wrapper {
+  display: flex;
+  height: 12px;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+  border: 1px solid var(--border-color);
+}
+
+.prob-segment {
+  height: 100%;
+  transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.prob-segment.home {
+  background-color: var(--text-ink);
+}
+
+.prob-segment.draw {
+  background-color: #d1d5db;
+}
+
+.prob-segment.away {
+  background-color: var(--accent-color);
+}
+
+.prob-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.label-val {
+  display: flex;
+  flex-direction: column;
+}
+
+.label-val.home { align-items: flex-start; color: var(--text-ink); }
+.label-val.draw { align-items: center; color: #A0A4AE; }
+.label-val.away { align-items: flex-end; color: var(--accent-color); }
+
+.prob-pct {
+  font-size: 0.85rem;
+}
+
+/* -------------------------------------
+   Status Indicator
+-------------------------------------- */
+.col-prediction {
+  text-align: right;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.tag {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  font-family: var(--font-hand);
+  font-size: 1.3rem;
+  background-color: transparent;
+  color: var(--text-ink);
+  border: 2px solid var(--border-color);
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  box-shadow: 2px 2px 0 rgba(0,0,0,0.1);
+  transition: all 0.2s ease;
+  transform: rotate(-2deg);
+}
+
+.tag.strong {
+  color: var(--accent-color);
+  border-color: var(--accent-color);
+  box-shadow: 2px 2px 0 rgba(220,38,38,0.15);
+}
+
+.full-time-flex {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1rem;
+  width: 100%;
+}
+.full-time-team.home { text-align: right; min-width: 120px; }
+.full-time-team.away { text-align: left; min-width: 120px; }
+.full-time-divider { font-weight: bold; font-size: 1.3rem; color: var(--text-muted); padding-top: 2px; }
+
+.extra-probs-flex {
+  display: flex;
+  gap: 2rem;
+  font-size: 1.2rem;
+  font-family: var(--font-hand);
+  color: var(--text-muted);
+}
+
+.almanac-table tbody tr.match-row:hover .tag {
+  transform: rotate(0deg);
+}
+
+.tag.strong {
+  border-bottom: 3px solid var(--accent-color);
+}
+
+/* -------------------------------------
+   Empty State / Loading
+-------------------------------------- */
+.empty-state {
+  text-align: center;
+  padding: 4rem 1rem;
+  font-family: var(--font-sans);
+  color: var(--text-muted);
+  font-style: italic;
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* Spinner */
+.loader {
+  border: 3px solid var(--border-color);
+  border-top: 3px solid var(--accent-color);
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* -------------------------------------
+   Footer
+-------------------------------------- */
+footer {
+  text-align: center;
+  padding: 2rem;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 2rem;
+}
+
+/* --------------------------------------
+   Match Details Expansion (Component 5)
+-------------------------------------- */
+.match-row {
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.match-row:hover {
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+.flag {
+    vertical-align: middle;
+    margin: 0 6px;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 2px;
+}
+
+.details-row {
+    background-color: var(--bg-color);
+}
+
+.details-row.hidden {
+    display: none;
+}
+
+.details-content {
+    display: flex;
+    gap: 2rem;
+    padding: 1.5rem;
+    font-family: var(--font-sans);
+    color: var(--text-main);
+    background-color: transparent;
+    border-top: 1px dashed var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.details-column {
+    flex: 1;
+}
+
+.details-column h4 {
+    font-family: var(--font-hand);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-ink);
+}
+
+.score-pred {
+    font-size: 1.2rem;
+    margin-bottom: 0.25rem;
+    font-family: var(--font-serif);
+}
+
+/* --------------------------------------
+   Dashboard Layout & Sidebar
+-------------------------------------- */
+.dashboard-layout {
+  display: flex;
+  max-width: 1400px;
+  margin: 0 auto;
+  gap: 2rem;
+  padding: 0 1rem;
+}
+
+.sidebar {
+  width: 220px;
+  flex-shrink: 0;
+  background: linear-gradient(145deg, #ffffff, #f0f0f0);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 4px 4px 15px rgba(0,0,0,0.03);
+  max-height: calc(100vh - 150px);
+  overflow-y: auto;
+}
+
+.sidebar h3 {
+  font-family: var(--font-hand);
+  font-size: 1.8rem;
+  color: var(--accent-color);
+  margin-bottom: 1.2rem;
+  border-bottom: 1px dashed var(--border-color);
+  padding-bottom: 0.5rem;
+}
+
+#stage-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.nav-link {
+  background: transparent;
+  border: 1px solid transparent;
+  text-align: left;
+  font-family: var(--font-hand);
+  font-size: 1.4rem;
+  color: var(--text-ink);
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  border: 1px solid var(--border-color);
+  transform: translateX(3px);
+}
+
+.nav-link.active {
+  font-weight: bold;
+  background: linear-gradient(135deg, var(--accent-color), #047857);
+  color: white;
+  border: 1px solid transparent;
+  box-shadow: 0 4px 10px rgba(5, 150, 105, 0.2);
+  transform: translateX(5px);
+}
+
+/* --------------------------------------
+   Pagination
+-------------------------------------- */
+.pagination-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  border-top: 1px solid var(--border-color);
+  font-family: var(--font-sans);
+}
+
+.pagination-controls.hidden {
+  display: none;
+}
+
+.btn-page {
+  background-color: var(--bg-color);
+  border: 2px solid var(--border-color);
+  color: var(--text-ink);
+  padding: 0.4rem 1rem;
+  font-family: var(--font-hand);
+  font-size: 1.2rem;
+  cursor: pointer;
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  transition: all 0.2s;
+}
+
+.btn-page:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.btn-page:not(:disabled):hover {
+  background-color: var(--text-ink);
+  color: var(--bg-color);
+}
+
+/* -------------------------------------
+   Mobile Responsiveness
+-------------------------------------- */
+.hamburger-btn {
+  display: none;
+  background: transparent;
+  border: none;
+  color: var(--accent-color);
+  padding: 0;
+  cursor: pointer;
+  margin: 0;
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 0 0.5rem 0.5rem 0.5rem;
+    overflow-x: hidden;
+  }
+
+  .app-header {
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.2rem;
+  }
+  
+  .header-content {
+    padding: 0.5rem;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .header-content h1 {
+    font-size: 1.5rem;
+  }
+  
+  .header-content .subtitle {
+    font-size: 0.65rem;
+  }
+
+  .wc-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .brand {
+    gap: 0.5rem;
+  }
+
+  .dashboard-layout {
+    flex-direction: column;
+  }
+  
+  .sidebar {
+    display: none;
+    width: 100%;
+    margin-bottom: 1rem;
+    border-right: none;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.5rem;
+  }
+  
+  .sidebar.active {
+    display: block;
+  }
+
+  .hamburger-btn {
+    display: inline-block;
+  }
+
+  /* Ultra compact card layout for table */
+  .almanac-table thead {
+    display: none;
+  }
+  
+  .almanac-table, .almanac-table tbody, .almanac-table tr, .almanac-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .almanac-table tbody tr.match-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0.5rem;
+    margin-bottom: 0.4rem;
+    border-radius: 6px;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .almanac-table th, .almanac-table td {
+    padding: 0.2rem;
+    border: none;
+  }
+
+  .col-date {
+    width: 100%;
+    font-size: 0.75rem;
+    color: var(--accent-color);
+    text-align: center;
+    margin-bottom: 0.2rem;
+  }
+
+  .col-match {
+    width: 40%;
+    font-size: 0.85rem;
+  }
+
+  .col-prediction {
+    width: 30%;
+    text-align: right;
+  }
+
+  .col-result {
+    width: 30%;
+    text-align: center;
+  }
+
+  .prob-bar-wrapper, .prob-labels {
+    display: none;
+  }
+
+  .match-fixture-wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.2rem;
+  }
+
+  .vs {
+    display: none;
+  }
+
+  .tag {
+    font-size: 0.9rem;
+    padding: 0.2rem 0.4rem;
+  }
+
+  /* When expanded on mobile, hide other rows to prevent scroll */
+  body.mobile-expanded-mode .almanac-table tbody tr.match-row:not(.active-row) {
+    display: none !important;
+  }
+  body.mobile-expanded-mode .pagination-controls {
+    display: none !important;
+  }
+  
+  /* Make expanded details ultra compact */
+  .details-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0.5rem;
+  }
+  .details-column {
+    flex: 1;
+    width: 100%;
+  }
+  .details-column h4 {
+    font-size: 0.8rem;
+    margin-bottom: 0.2rem;
+  }
+  .details-column p, .details-column small, .score-pred {
+    font-size: 0.75rem;
+    margin-bottom: 0.2rem;
+  }
+  
+  .full-time-flex {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .full-time-team.home, .full-time-team.away {
+    text-align: center;
+    min-width: unset;
+  }
+  .full-time-divider {
+    display: none;
+  }
+  .extra-probs-flex {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+}

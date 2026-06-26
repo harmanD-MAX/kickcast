@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KickCast Almanac — World Cup Predictions</title>
+    <meta name="description" content="Editorial, hand-crafted predictions for the FIFA World Cup 2026. Powered by Machine Learning.">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header class="app-header">
+        <div class="header-content">
+            <div class="brand">
+                <svg class="wc-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+                    <path d="M2 12h20"></path>
+                </svg>
+                <div class="header-text">
+                    <h1>KICKCAST</h1>
+                    <p class="subtitle">WORLD CUP 2026 PREDICTOR</p>
+                </div>
+            </div>
+            <button id="mobile-menu-toggle" class="hamburger-btn">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+    </header>
+    
+    <div class="dashboard-layout">
+        <aside class="sidebar">
+            <h3>Tournament Stage</h3>
+            <nav id="stage-nav">
+                <!-- Javascript will populate these buttons -->
+            </nav>
+        </aside>
+
+        <main class="container">
+            <div class="glass-panel">
+                <div class="table-container">
+                    <table class="almanac-table">
+                        <thead>
+                            <tr>
+                                <th class="col-date">Date</th>
+                                <th class="col-match">Fixture</th>
+                                <th class="col-prob">Probability Forecast</th>
+                                <th class="col-prediction">Our Pick</th>
+                                <th class="col-result">Full Time</th>
+                            </tr>
+                        </thead>
+                        <tbody id="predictions-body">
+                            <!-- Loading State -->
+                            <tr id="loading-row">
+                                <td colspan="5">
+                                    <div class="empty-state">
+                                        <div class="loader"></div>
+                                        Consulting the oracle...
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div id="pagination-controls" class="pagination-controls hidden">
+                        <button id="btn-prev" class="btn-page" disabled>Previous</button>
+                        <span id="page-indicator">Page 1</span>
+                        <button id="btn-next" class="btn-page">Next</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
